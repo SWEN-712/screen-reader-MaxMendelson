@@ -6,15 +6,9 @@
 complexSymbols:
 # identifier	regexp
 # Sentence endings.
-. sentence ending	(?<=[^\s.])\.(?=[\"'”’)\s]|$)
-! sentence ending	(?<=[^\s!])\!(?=[\"'”’)\s]|$)
-? sentence ending	(?<=[^\s?])\?(?=[\"'”’)\s]|$)
 # Phrase endings.
-; phrase ending	(?<=[^\s;]);(?=\s|$)
-: phrase ending	(?<=[^\s:]):(?=\s|$)
 # Others
 decimal point	(?<![^\d -])\.(?=\d)
-in-word '	(?<=[^\W_])['’]
 negative number	(?<!\w)-(?=[$£€¥.]?\d)
 
 symbols:
@@ -22,13 +16,11 @@ symbols:
 
 # Complex symbols
 . sentence ending	dot	all	always
-! sentence ending	bang	all	always
-? sentence ending	question	all	always
-; phrase ending	semi	most	always
-: phrase ending	colon	most	always
 decimal point		none	always
 in-word '	tick	all	norep
 negative number	minus	none	norep
+:	colon	most	norep
+;	end statement	most
 
 # Whitespace
 \0	blank	char	# null
@@ -40,8 +32,8 @@ negative number	minus	none	norep
  	space	char	# no-break space
 
 # Standard punctuation/symbols
-!	bang	all
-"	quote	most
+!   not	    all norep
+"	double quote	all always
 \#	number	some
 $	dollar	all	norep
 £	pound	all	norep
@@ -49,32 +41,31 @@ $	dollar	all	norep
 ¢	Cents	all	norep
 ¥	Yen	all	norep
 ₹	Rupee	some	norep
-%	percent	some
-&	and	some
-'	tick	all
-(	left paren	most	always
-)	right paren	most	always
-*	star	some
+%	modulus	some
+&   single and	all always
+&&  double and all  always
+'	single quote	all always
+(	open paren	all	always
+)	closed paren	all	always
+*   is multiplied by    all norep
 +	plus	some
 ,	comma	all	always
 -	dash	most
 .	dot	some
-/	slash	some
-:	colon	most	norep
-;	semi	most
-<	less	some
->	greater	some
+/	backslash	all always
+<	less than sign	some
+>   greater than sign 	some
 =	equals	some
-?	question	all
+?	ternatry operator	all
 @	at	some
 [	left bracket	most
 ]	right bracket	most
 \\	backslash	most
-^	caret	most
+^	to the exponent	most
 _	line	most
 `	graav	most
-{	left brace	most
-}	right brace	most
+{	open curly brace    all always
+}	closed curly brace	all always
 |	bar	most
 ~	tilda	most
 
@@ -99,7 +90,6 @@ _	line	most
 ⇒	right double arrow	some
 ⇨	right white arrow	some
 ➢	right arrowhead	some
-⮚	right arrowhead	some
 ❖	black diamond minus white X	some
 ♣	black club	some
 ♦	black diamond	some
@@ -123,7 +113,6 @@ _	line	most
 ↓	down arrow	some
 ✓	check	some
 ✔	check	some
-🡺	right arrow	some
 
 #Mathematical Operators U+2200 to U+220F
 ∀	for all	none
